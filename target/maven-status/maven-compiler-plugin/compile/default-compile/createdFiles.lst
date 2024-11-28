@@ -1,0 +1,9 @@
+com\upiiz\logs\controllers\LogController.class
+com\upiiz\logs\repositories\LogRepository.class
+com\upiiz\logs\entities\LogEntity.class
+com\upiiz\logs\config\SwaggerConfig.class
+com\upiiz\logs\LogsApplication.class
+com\upiiz\logs\services\LogService.class
+com\upiiz\logs\dto\LogDTO.class
+com\upiiz\logs\config\SecurityConfig.class
+com\upiiz\logs\entities\LogEntity$LogEntityBuilder.class
