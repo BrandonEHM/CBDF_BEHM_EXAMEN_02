@@ -20,7 +20,12 @@ public class LogController {
     public ResponseEntity<List<LogDTO>> getAllLogs() {
         return ResponseEntity.ok(logService.getAllLogs());
     }
-
+//-----------
+    @GetMapping
+    public ResponseEntity<String> getLogs() {
+        return ResponseEntity.ok("Prueba exitosa");
+    }
+//-----------
     @GetMapping("/{id}")
     @PreAuthorize("hasAuthority('READ')")
     public ResponseEntity<LogDTO> getLogById(@PathVariable Long id) {

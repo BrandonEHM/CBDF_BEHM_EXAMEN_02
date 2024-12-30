@@ -25,15 +25,15 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        return http
-                .httpBasic()
+        http.cors().configurationSource(corsConfigurationSource())
                 .and()
+                .csrf().disable()
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll() // Permitir acceso a Swagger sin autenticación
                         .anyRequest().authenticated()
                 )
-                .csrf().disable()
-                .build();
+                .httpBasic();
+
+        return http.build();
     }
 
     @Bean
@@ -72,6 +72,9 @@ public class SecurityConfig {
     }
 
     //CORS
+
+
+
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
@@ -82,6 +85,7 @@ public class SecurityConfig {
         source.registerCorsConfiguration("/**", configuration);
         return source;
     }
+
 
 
     @Bean

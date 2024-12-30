@@ -13,6 +13,8 @@ import java.util.Optional;
 
 @Service
 public class LogService {
+
+
     @Autowired
     private LogRepository logRepository;
 
@@ -22,7 +24,7 @@ public class LogService {
         return convertToDTO(savedLog);
     }
 
-    public List<LogDTO> getAllLogs() {
+    /*public List<LogDTO> getAllLogs() {
         List<LogEntity> logs = (List<LogEntity>) logRepository.findAll();
         List<LogDTO> logDTOs = new ArrayList<>();
 
@@ -31,6 +33,12 @@ public class LogService {
         }
 
         return logDTOs;
+    }*/
+
+    public List<LogDTO> getAllLogs() {
+        List<LogEntity> logs = (List<LogEntity>) logRepository.findAll();
+        System.out.println("Logs encontrados: " + logs.size()); // Log simple
+        return logs.stream().map(this::convertToDTO).toList();
     }
 
     public LogDTO getLogById(Long id) {
@@ -74,4 +82,6 @@ public class LogService {
         logDTO.setAction(logEntity.getAction());
         return logDTO;
     }
+
+
 }
